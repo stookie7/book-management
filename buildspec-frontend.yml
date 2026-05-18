@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    NEXT_PUBLIC_API_URL: "https://백엔드EB주소"
+    NEXT_PUBLIC_API_URL: "http://Book-management-env.eba-mzfb2agq.ap-northeast-2.elasticbeanstalk.com"
 
 phases:
   install:
