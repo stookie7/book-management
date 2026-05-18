@@ -4,8 +4,10 @@ Spring Boot + Next.js 풀스택 도서 관리 애플리케이션
 
 ## 기술 스택
 
+| 구분 | 기술 |
+|------|------|
 | Backend | Spring Boot 3.x, Java 21, Spring Data JPA, H2 |
-| Frontend | Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS |
+| Frontend | Next.js 16, React 19, TypeScript, Tailwind CSS |
 
 ## 실행 방법
 
@@ -30,7 +32,7 @@ npm run dev
 ## API 엔드포인트
 
 | Method | URL | 설명 |
-
+|--------|-----|------|
 | GET | /api/books | 전체 목록 조회 |
 | GET | /api/books?keyword={검색어} | 키워드 검색 |
 | GET | /api/books/{id} | 단건 조회 |
