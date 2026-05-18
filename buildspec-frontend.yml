@@ -1,0 +1,37 @@
+version: 0.2
+
+env:
+  variables:
+    NEXT_PUBLIC_API_URL: "https://백엔드EB주소"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+
+  pre_build:
+    commands:
+      - node -v && npm -v
+
+  build:
+    commands:
+      - cd frontend && npm ci && npm run build
+
+  post_build:
+    commands:
+      - cd ..
+      - mkdir -p deploy-frontend
+      - cp -r frontend/.next deploy-frontend/
+      - cp frontend/package.json deploy-frontend/
+      - cp frontend/package-lock.json deploy-frontend/
+      - echo "web: npm start" > deploy-frontend/Procfile
+      - '[ -f frontend/next.config.ts ] && cp frontend/next.config.ts deploy-frontend/ || true'
+      - '[ -d frontend/public ] && cp -r frontend/public deploy-frontend/ || true'
+      - '[ -d frontend/.ebextensions ] && cp -r frontend/.ebextensions deploy-frontend/ || true'
+      - ls -la deploy-frontend/
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: deploy-frontend
+  discard-paths: no
